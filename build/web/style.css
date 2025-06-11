@@ -1,0 +1,36 @@
+body {
+    background-color: #f9f9f9;
+}
+ 
+h1, .navbar-brand {
+    font-weight: bold;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.bg-teal {
+    background-color: #20c997 !important; /* Bootstrap teal color */
+    color: white;
+}
+
+/* === Hover effect for car cards === */
+.car-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+
+
+
+
+
+
+

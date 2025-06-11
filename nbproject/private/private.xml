@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/S70135/CarRental/web/bookingHistory.jsp</file>
+            <file>file:/C:/S70135/CarRental/src/java/dao/CarDAO.java</file>
+            <file>file:/C:/S70135/CarRental/src/java/dao/BookingDAO.java</file>
+            <file>file:/C:/S70135/CarRental/src/java/model/Booking.java</file>
+            <file>file:/C:/S70135/CarRental/src/java/dao/PaymentDAO.java</file>
+            <file>file:/C:/S70135/CarRental/src/java/dao/UserDAO.java</file>
+            <file>file:/C:/S70135/CarRental/src/java/controller/RejectCancelServlet.java</file>
+            <file>file:/C:/S70135/CarRental/web/rentedCars.jsp</file>
+            <file>file:/C:/S70135/CarRental/src/java/controller/ApproveCancelServlet.java</file>
+            <file>file:/C:/S70135/CarRental/src/java/controller/RequestCancelBookingServlet.java</file>
+        </group>
+    </open-files>
+</project-private>
