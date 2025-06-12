@@ -1,23 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import dao.BookingDAO;
 import dao.CarDAO;
 import model.Booking;
 import model.Car;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
-
 import java.awt.Color;
 
 @WebServlet("/DownloadInvoiceServlet")
@@ -43,17 +36,14 @@ public class DownloadInvoiceServlet extends HttpServlet {
 
                 document.open();
 
-                // 1. Add a logo (optional)
                 try {
                     Image logo = Image.getInstance(getServletContext().getRealPath("/images/logo.png"));
                     logo.scaleToFit(100, 100);
                     logo.setAlignment(Image.ALIGN_RIGHT);
                     document.add(logo);
                 } catch (Exception e) {
-                    // Ignore if logo not found
                 }
 
-                // 2. Add title and fonts
                 Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, Color.BLUE);
                 Font sectionFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, Color.DARK_GRAY);
                 Font contentFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
@@ -63,19 +53,16 @@ public class DownloadInvoiceServlet extends HttpServlet {
                 title.setSpacingAfter(15);
                 document.add(title);
 
-                // 3. Add booking details
                 document.add(new Paragraph("Booking ID: " + booking.getBookingId(), sectionFont));
                 document.add(new Paragraph("Status: " + booking.getStatus(), contentFont));
                 document.add(new Paragraph("Start Date: " + booking.getStartDate(), contentFont));
                 document.add(new Paragraph("End Date: " + booking.getEndDate(), contentFont));
                 document.add(Chunk.NEWLINE);
 
-                // 4. Add car details
                 document.add(new Paragraph("Car Details:", sectionFont));
                 document.add(new Paragraph("Car: " + car.getBrand() + " " + car.getModel(), contentFont));
                 document.add(Chunk.NEWLINE);
 
-                // 5. Add cost
                 document.add(new Paragraph("Total Cost: RM " + booking.getTotalCost(), sectionFont));
 
                 document.close();
