@@ -46,7 +46,7 @@ public class PaymentServlet extends HttpServlet {
             }
 
             if (method.equalsIgnoreCase("Cash")) {
-                response.sendRedirect("paymentSuccess.jsp?bookingId=" + bookingId + "&pending=true");
+                response.sendRedirect("cashPending.jsp?bookingId=" + bookingId + "&pending=true");
             } else {
                 response.sendRedirect("paymentSuccess.jsp?bookingId=" + bookingId);
             }

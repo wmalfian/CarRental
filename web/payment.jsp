@@ -35,7 +35,7 @@
                     <option value="Online Transfer">Online Transfer</option>
                     <option value="Credit Card">Credit Card</option>
                     <option value="PayPal">PayPal</option>
-                    <option value="Cash">Cash</option> <!-- ✅ New option added -->
+                    <option value="Cash">Cash</option> 
                 </select>
             </div>
             <button type="submit" class="btn btn-success">Confirm</button>
