@@ -15,8 +15,7 @@ public class ApproveCancelServlet extends HttpServlet {
         BookingDAO dao = new BookingDAO();
         dao.updateBookingStatus(bookingId, "cancelled");
 
-        // Set car status to 'available' as well
-        dao.cancelBooking(bookingId); // Optional, if you want to also free the car
+        dao.cancelBooking(bookingId); 
 
         response.sendRedirect("rentedCars.jsp?msg=approved");
     }
