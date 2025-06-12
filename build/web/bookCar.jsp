@@ -1,14 +1,5 @@
-<%-- 
-    Document   : bookCar
-    Created on : May 26, 2025, 3:01:50 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet.http.*, java.sql.Date" %>
-<%@ page import="model.Car" %>
-<%@ page import="dao.CarDAO" %>
-<%@ page import="model.User" %>
+<%@ page import="javax.servlet.http.*, java.sql.Date, model.Car, model.User, dao.CarDAO" %>
 
 <%
     User user = (User) session.getAttribute("currentUser");
