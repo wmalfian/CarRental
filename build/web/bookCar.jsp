@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet.http.*, java.sql.Date, model.Car, model.User, dao.CarDAO" %>
+<%@ page import="javax.servlet.http.*, java.sql.Date, model.User, model.Car, dao.CarDAO" %>
 <%
     User user = (User) session.getAttribute("currentUser");
     if (user == null || !"customer".equals(user.getRole())) {

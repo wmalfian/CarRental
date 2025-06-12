@@ -1,12 +1,5 @@
-<%-- 
-    Document   : rentedCars
-    Created on : Jun 10, 2025, 2:05:46 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, dao.BookingDAO" %>
-<%@ page import="model.User" %>
+<%@ page import="java.util.*, dao.BookingDAO, model.User" %>
 <%
     User user = (User) session.getAttribute("currentUser");
     if (user == null || !"admin".equals(user.getRole())) {
@@ -17,7 +10,6 @@
     BookingDAO bookingDao = new BookingDAO();
     List<Map<String, Object>> rentedCars = bookingDao.getRentedCarDetails();
 %>
-
 <!DOCTYPE html>
 <html>
 <head>

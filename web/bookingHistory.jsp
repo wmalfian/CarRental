@@ -1,9 +1,3 @@
-<%-- 
-    Document   : bookingHistory
-    Created on : May 30, 2025, 3:47:45 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.time.LocalDate, model.User, model.Booking, dao.BookingDAO, dao.CarDAO, model.Car, java.util.List" %>
 <%
@@ -27,7 +21,6 @@
 
     LocalDate today = LocalDate.now();
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>

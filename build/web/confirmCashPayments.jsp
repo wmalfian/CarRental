@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, model.Payment, model.User, dao.PaymentDAO, dao.UserDAO" %>
+<%@ page import="java.util.List, model.User, model.Payment, dao.PaymentDAO, dao.UserDAO" %>
 <%
     User user = (User) session.getAttribute("currentUser");
     if (user == null || !"admin".equals(user.getRole())) {
@@ -46,13 +46,14 @@
                     <th>Customer Name</th>
                     <th>Phone</th>
                     <th>Amount</th>
+
                     <th>Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <% 
-                    UserDAO userDao = new UserDAO(); // move DAO out of loop for efficiency
+                    UserDAO userDao = new UserDAO(); 
                     for (Payment p : pendingCashPayments) { 
                         User customer = userDao.getUserById(p.getUserId()); 
                 %>

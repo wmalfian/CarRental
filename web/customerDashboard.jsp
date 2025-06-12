@@ -1,9 +1,3 @@
-<%-- 
-    Document   : customerDashboard
-    Created on : May 30, 2025, 2:48:51 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*, model.Car, dao.CarDAO, model.User"%>
 <%
@@ -19,7 +13,6 @@
 
     CarDAO carDao = new CarDAO();
 
-    // Get distinct brand list for dropdown
     List<String> brandOptions = carDao.getAvailableBrands();
 
     List<Car> carList;
@@ -31,7 +24,6 @@
         carList = carDao.getAvailableCars();
     }
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : viewCars
-    Created on : May 26, 2025, 3:01:31 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, model.Car, model.User, dao.CarDAO" %>
 <%

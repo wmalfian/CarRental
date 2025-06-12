@@ -1,9 +1,3 @@
-<%-- 
-    Document   : paymentSuccess
-    Created on : May 27, 2025, 12:59:34 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%

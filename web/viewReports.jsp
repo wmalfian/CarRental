@@ -1,9 +1,3 @@
-<%-- 
-    Document   : viewReports
-    Created on : May 27, 2025, 1:05:29 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, model.Report, model.User, dao.ReportDAO" %>
 <%
@@ -40,7 +34,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <% } %>
-            <!-- Generate New Report Form -->
             <div class="card mb-4">
                 <div class="card-body">
                     <form action="GenerateReportServlet" method="post" onsubmit="return confirm('Generate Report?');">
@@ -61,7 +54,6 @@
                 </div>
             </div>
 
-            <!-- Filter Form -->
             <form method="get" class="row g-3 mb-4" );>
                 <div class="col-md-4">
                     <select name="filterType" class="form-select">
@@ -79,7 +71,6 @@
                 </div>
             </form>
 
-            <!-- Report Display -->
             <%
                 ReportDAO dao = new ReportDAO();
                 List<Report> reportList = dao.getAllReports();

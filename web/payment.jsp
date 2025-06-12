@@ -1,9 +1,3 @@
-<%-- 
-    Document   : payment
-    Created on : May 27, 2025, 12:58:51 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.*, model.User" %>
 <%

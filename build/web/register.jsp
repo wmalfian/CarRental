@@ -1,9 +1,3 @@
-<%-- 
-    Document   : register
-    Created on : May 26, 2025, 2:43:27 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,7 +46,6 @@
                                 <input type="password" id="confirmPassword" class="form-control" required>
                             </div>
 
-                            <!-- Force customer role -->
                             <input type="hidden" name="role" value="customer">
 
                             <button type="submit" class="btn btn-success w-100">Register</button>

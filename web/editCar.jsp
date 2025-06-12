@@ -1,9 +1,3 @@
-<%-- 
-    Document   : editCar
-    Created on : Jun 1, 2025, 1:27:33 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User, model.Car, dao.CarDAO" %>
 <%

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : navbar
-    Created on : May 30, 2025, 5:26:29 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%
@@ -27,7 +21,7 @@
     <script>
         let timeout = setTimeout(() => {
             window.location.href = "login.jsp?timeout=true";
-        }, 840000); // 5 seconds for testing
+        }, 840000); 
 
         ['click', 'keydown', 'mousemove'].forEach(evt =>
             document.addEventListener(evt, () => {

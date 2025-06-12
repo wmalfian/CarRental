@@ -12,11 +12,10 @@ h1, .navbar-brand {
 }
 
 .bg-teal {
-    background-color: #20c997 !important; /* Bootstrap teal color */
+    background-color: #20c997 !important;
     color: white;
 }
 
-/* === Hover effect for car cards === */
 .car-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : editProfile
-    Created on : May 27, 2025, 11:19:35 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%
@@ -72,7 +66,6 @@
                     <button type="submit" class="btn btn-primary">Update</button>
                     <a href="profile.jsp" class="btn btn-secondary ms-2">Cancel</a>
                 </form>
-            </div>
         </div>
     </div>
 </main>

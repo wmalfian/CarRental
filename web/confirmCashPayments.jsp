@@ -1,15 +1,5 @@
-<%-- 
-    Document   : confirmCashPayments
-    Created on : Jun 9, 2025, 7:45:13 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="model.Payment" %>
-<%@ page import="dao.PaymentDAO" %>
-<%@ page import="dao.UserDAO" %>
-<%@ page import="model.User" %>
+<%@ page import="java.util.List, model.User, model.Payment, dao.PaymentDAO, dao.UserDAO" %>
 <%
     User user = (User) session.getAttribute("currentUser");
     if (user == null || !"admin".equals(user.getRole())) {
@@ -20,7 +10,6 @@
     PaymentDAO paymentDao = new PaymentDAO();
     List<Payment> pendingCashPayments = paymentDao.getPendingCashPayments();
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +53,7 @@
             </thead>
             <tbody>
                 <% 
-                    UserDAO userDao = new UserDAO(); // move DAO out of loop for efficiency
+                    UserDAO userDao = new UserDAO(); 
                     for (Payment p : pendingCashPayments) { 
                         User customer = userDao.getUserById(p.getUserId()); 
                 %>

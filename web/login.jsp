@@ -1,11 +1,4 @@
-<%-- 
-    Document   : login
-    Created on : May 26, 2025, 2:42:25 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>

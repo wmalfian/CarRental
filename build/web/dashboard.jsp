@@ -1,13 +1,5 @@
-<%-- 
-    Document   : dashboard
-    Created on : May 26, 2025, 2:44:30 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.text.DecimalFormat" %>
-<%@ page import="model.User" %>
-
+<%@ page import="java.text.DecimalFormat, model.User" %>
 <%
     User user = (User) session.getAttribute("currentUser");
 
@@ -33,7 +25,6 @@
 
     DecimalFormat df = new DecimalFormat("RM#,##0.00");
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -105,17 +96,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- Add more cards for Cars, Payments, Bookings etc. -->
             </div>
 
-            <!-- ✅ Chart Canvas -->
             <h3 class="mt-4">System Summary Chart</h3>
             <canvas id="dashboardChart" width="400" height="150"></canvas>
         </div>
     </main>
     <%@ include file="footer.jsp" %>
 
-    <!-- ✅ Call JS function with backend data -->
     <script>
         renderDashboardChart(<%= users %>, <%= cars %>, <%= bookings %>, <%= revenue %>);
     </script>

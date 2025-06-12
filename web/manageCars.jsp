@@ -1,14 +1,5 @@
-<%-- 
-    Document   : manageCars
-    Created on : Jun 1, 2025, 1:02:11 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="model.Car" %>
-<%@ page import="dao.CarDAO" %>
-<%@ page import="model.User" %>
+<%@ page import="java.util.List, model.Car, model.User, dao.CarDAO" %>
 <%
     User user = (User) session.getAttribute("currentUser");
     if (user == null || !"admin".equals(user.getRole())) {
@@ -19,7 +10,6 @@
     CarDAO carDao = new CarDAO();
     List<Car> carList = carDao.getAllCars();
 
-    // ✅ Add this filtering block right below
     String typeFilter = request.getParameter("type");
     String statusFilter = request.getParameter("status");
 
@@ -38,7 +28,6 @@
         carList = filteredList;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -99,11 +88,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <% } %>
-
-
-
-
-
         <a href="addCar.jsp" class="btn btn-success">Add New Car</a>
     </div>
     <form method="get" class="row g-3 mb-4">
@@ -185,7 +169,6 @@
 
     <a href="dashboard.jsp" class="btn btn-secondary mt-3">Back to Dashboard</a>
 </main>
-
 <%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -1,12 +1,5 @@
-<%-- 
-    Document   : pendingPayments
-    Created on : Jun 9, 2025, 7:33:34 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, model.Booking, model.Car" %>
-<%@ page import="model.User" %>
+<%@ page import="java.util.*, model.Booking, model.Car, model.User" %>
 <%
     User user = (User) session.getAttribute("currentUser");
     if (user == null || !"admin".equals(user.getRole())) {
@@ -17,7 +10,6 @@
     List<Booking> pendingBookings = (List<Booking>) request.getAttribute("pendingBookings");
     Map<Integer, Car> carMap = (Map<Integer, Car>) request.getAttribute("carMap");
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>

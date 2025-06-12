@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index.jsp
-    Created on : May 26, 2025, 2:35:39 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*, model.Car, dao.CarDAO"%>
 <%
@@ -11,7 +5,6 @@
 
     List<String> brandOptions = carDao.getAvailableBrands();
 
-    // Get filter parameters from request
     String selectedBrand = request.getParameter("brand");
     String selectedType = request.getParameter("type");
     String selectedFuel = request.getParameter("fuel");
@@ -25,27 +18,12 @@
         carList = carDao.getAvailableCars();
     }
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
     <title>Car Rental System</title>
-    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        .car-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .car-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            z-index: 10;
-        }
-    </style>
- 
 </head>
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
