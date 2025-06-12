@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
-/**
- *
- * @author wmalf
- */
 import java.io.IOException;
 import java.sql.Date;
 import javax.servlet.*;
@@ -45,7 +37,6 @@ public class BookingServlet extends HttpServlet {
 
         double totalCost = car.getPricePerDay() * days;
 
- 
         Booking booking = new Booking();
         booking.setUserId(userId);
         booking.setCarId(carId);
@@ -64,7 +55,6 @@ public class BookingServlet extends HttpServlet {
             request.setAttribute("error", "Booking failed.");
             request.getRequestDispatcher("bookCar.jsp").forward(request, response);
         }
-
         
     }
 }
