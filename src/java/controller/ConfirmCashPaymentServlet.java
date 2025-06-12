@@ -3,7 +3,6 @@ package controller;
 import dao.BookingDAO;
 import dao.CarDAO;
 import dao.PaymentDAO;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
