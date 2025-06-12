@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import dao.UserDAO;
 import model.User;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -25,12 +20,10 @@ public class UpdateProfileServlet extends HttpServlet {
             return;
         }
 
-        // Get updated basic info
         String updatedUsername = request.getParameter("username");
         String updatedEmail = request.getParameter("email");
         String updatedPhone = request.getParameter("phone");
 
-        // Password change fields
         String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
         String confirmPassword = request.getParameter("confirmPassword");
@@ -39,26 +32,21 @@ public class UpdateProfileServlet extends HttpServlet {
 
         boolean updatePassword = false;
 
-        // ✅ Validate password change
         if (currentPassword != null && !currentPassword.trim().isEmpty()
                 && newPassword != null && !newPassword.trim().isEmpty()
                 && confirmPassword != null && !confirmPassword.trim().isEmpty()) {
-
             if (!dao.verifyPassword(user.getUserId(), currentPassword)) {
                 response.sendRedirect("editProfile.jsp?error=Current password is incorrect.");
                 return;
             }
-
             if (!newPassword.equals(confirmPassword)) {
                 response.sendRedirect("editProfile.jsp?error=New passwords do not match.");
                 return;
             }
-
             user.setPassword(newPassword);
             updatePassword = true;
         }
 
-        // ✅ Update basic user info
         user.setUsername(updatedUsername);
         user.setEmail(updatedEmail);
         user.setPhone(updatedPhone);
