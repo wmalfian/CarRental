@@ -1,9 +1,3 @@
-<%-- 
-    Document   : bookingSuccess
-    Created on : May 30, 2025, 3:41:42 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%
@@ -13,7 +7,6 @@
         return;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
