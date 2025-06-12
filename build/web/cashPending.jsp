@@ -1,9 +1,3 @@
-<%-- 
-    Document   : cashPending
-    Created on : Jun 9, 2025, 5:20:52 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%
