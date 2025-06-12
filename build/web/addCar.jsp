@@ -1,9 +1,3 @@
-<%-- 
-    Document   : addCar
-    Created on : May 26, 2025, 3:00:25 PM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%
