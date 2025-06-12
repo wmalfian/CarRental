@@ -1,9 +1,3 @@
-<%-- 
-    Document   : createAdmin
-    Created on : Jun 2, 2025, 1:36:47 AM
-    Author     : wmalf
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%

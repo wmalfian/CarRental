@@ -16,7 +16,6 @@ h1, .navbar-brand {
     color: white;
 }
 
-/* === Hover effect for car cards === */
 .car-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

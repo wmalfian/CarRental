@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import java.io.IOException;
@@ -9,10 +5,8 @@ import java.io.OutputStream;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
-
 import dao.PaymentDAO;
 import dao.BookingDAO;
 import dao.CarDAO;
@@ -53,7 +47,6 @@ public class DownloadReceiptServlet extends HttpServlet {
 
                 document.open();
 
-                // Optional logo
                 try {
                     Image logo = Image.getInstance(getServletContext().getRealPath("/images/logo.png"));
                     logo.scaleToFit(100, 100);
@@ -61,18 +54,15 @@ public class DownloadReceiptServlet extends HttpServlet {
                     document.add(logo);
                 } catch (Exception e) { }
 
-                // Fonts
                 Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, Color.BLUE);
                 Font labelFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
                 Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
 
-                // Title
                 Paragraph title = new Paragraph("Car Rental Receipt (" + status + ")", titleFont);
                 title.setAlignment(Element.ALIGN_CENTER);
                 title.setSpacingAfter(20);
                 document.add(title);
 
-                // Main table
                 PdfPTable table = new PdfPTable(2);
                 table.setWidthPercentage(100);
                 table.setSpacingBefore(10f);

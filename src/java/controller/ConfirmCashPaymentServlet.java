@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import dao.BookingDAO;
 import dao.CarDAO;
 import dao.PaymentDAO;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -20,7 +15,6 @@ public class ConfirmCashPaymentServlet extends HttpServlet {
 
         int bookingId = Integer.parseInt(request.getParameter("bookingId"));
 
-        // Update payment and booking status to 'paid' and 'rented'
         PaymentDAO paymentDAO = new PaymentDAO();
         BookingDAO bookingDAO = new BookingDAO();
         CarDAO carDAO = new CarDAO();
@@ -31,7 +25,6 @@ public class ConfirmCashPaymentServlet extends HttpServlet {
         int carId = bookingDAO.getBookingById(bookingId).getCarId();
         carDAO.updateCarStatus(carId, "rented");
 
-        // ✅ Redirect with success message
         response.sendRedirect("confirmCashPayments.jsp?msg=confirmed");
     }
 }

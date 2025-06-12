@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import dao.BookingDAO;
@@ -19,8 +15,7 @@ public class ApproveCancelServlet extends HttpServlet {
         BookingDAO dao = new BookingDAO();
         dao.updateBookingStatus(bookingId, "cancelled");
 
-        // Set car status to 'available' as well
-        dao.cancelBooking(bookingId); // Optional, if you want to also free the car
+        dao.cancelBooking(bookingId); 
 
         response.sendRedirect("rentedCars.jsp?msg=approved");
     }
