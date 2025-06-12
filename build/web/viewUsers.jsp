@@ -21,7 +21,6 @@
     <div class="container mt-4">
         <h2>User List</h2>
 
-        <!-- Alert messages -->
         <% if (request.getParameter("success") != null) { %>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <%= request.getParameter("success") %>
