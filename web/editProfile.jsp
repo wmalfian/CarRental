@@ -33,7 +33,7 @@
                 </div>
             <% } %>
 
-                <form action="UpdateProfileServlet" method="post">
+                <form action="UpdateProfileServlet" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to edit your profile details?');">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" name="username" id="username" value="<%= user.getUsername() %>" class="form-control" required>
