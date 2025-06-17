@@ -1,20 +1,23 @@
-# Stage 1: Build the WAR using Apache Ant
-FROM ant AS builder
+# Stage 1: Build WAR using Java + Ant
+FROM openjdk:8-jdk AS builder
+
+# Install Ant
+RUN apt-get update && apt-get install -y ant
 
 WORKDIR /app
 
-# Copy all project files (including build.xml and src folders)
+# Copy your project files (build.xml, src, web, etc.)
 COPY . .
 
-# Build the WAR using Ant
+# Run Ant build
 RUN ant clean
 RUN ant -f build.xml
 
-# Stage 2: Use Tomcat to run the WAR
+# Stage 2: Run the app with Tomcat
 FROM tomcat:9.0
 
 # Remove default apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy the built WAR (assumes it's generated in /app/dist/*.war or build/web/)
+# Copy build output (adjust if necessary)
 COPY --from=builder /app/build/web /usr/local/tomcat/webapps/ROOT
