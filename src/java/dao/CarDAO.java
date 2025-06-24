@@ -4,6 +4,10 @@
  */
 package dao;
 
+/**
+ *
+ * @author wmalf
+ */
 import java.sql.*;
 import java.util.*;
 import model.Car;
@@ -33,37 +37,25 @@ public class CarDAO {
 
     public List<Car> getAvailableCars() {
         List<Car> list = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            conn = DBConnection.getConnection();
-            if (conn == null) {
-                System.err.println("DB connection null in getAvailableCars");
-                return list;
-            }
-
-            String sql = "SELECT * FROM cars WHERE status='available'";
-            stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery();
+        String sql = "SELECT * FROM cars WHERE status='available'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Car car = new Car();
-                // ... populate car object ...
+                car.setCarId(rs.getInt("car_id"));
+                car.setBrand(rs.getString("brand"));
+                car.setModel(rs.getString("model"));
+                car.setType(rs.getString("type"));
+                car.setPricePerDay(rs.getDouble("price_per_day"));
+                car.setStatus(rs.getString("status"));
+                car.setFuelType(rs.getString("fuel_type"));
+                car.setImagePath(rs.getString("image_path"));
                 list.add(car);
             }
         } catch (SQLException e) {
-            System.err.println("Error in getAvailableCars: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException ex) {
-                System.err.println("Error closing resources: " + ex.getMessage());
-            }
         }
         return list;
     }
@@ -220,36 +212,15 @@ public class CarDAO {
     }
     public List<String> getAvailableBrands() {
         List<String> brands = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            conn = DBConnection.getConnection();
-            if (conn == null) {
-                System.err.println("Database connection is null!");
-                return brands; // Return empty list instead of null
-            }
-
-            String sql = "SELECT DISTINCT brand FROM cars WHERE status = 'available'";
-            stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery();
-
+        String sql = "SELECT DISTINCT brand FROM cars WHERE status = 'available'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 brands.add(rs.getString("brand"));
             }
         } catch (SQLException e) {
-            System.err.println("Error in getAvailableBrands: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            // Close resources in finally block
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException ex) {
-                System.err.println("Error closing resources: " + ex.getMessage());
-            }
         }
         return brands;
     }
