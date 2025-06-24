@@ -8,22 +8,29 @@ public class DBConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
-            // Try to get Railway environment variables first
-            String railwayDB = System.getenv("MySQLDATABASE");
+            // Get Railway environment variables
             String railwayHost = System.getenv("MySQLHOST");
             String railwayPort = System.getenv("MySQLPORT");
+            String railwayDB = System.getenv("MySQLDATABASE");
             String railwayUser = System.getenv("MySQLUSER");
             String railwayPassword = System.getenv("MySQLPASSWORD");
             
-            if (railwayHost != null && railwayPort != null && railwayDB != null) {
-                // Connect to Railway database
-                String jdbcUrl = "jdbc:mysql://" + railwayHost + ":" + railwayPort + "/" + railwayDB;
+            // Check if we're in Railway environment
+            if (railwayHost != null && railwayPort != null) {
+                // Construct Railway JDBC URL with SSL parameters
+                String jdbcUrl = "jdbc:mysql://" + railwayHost + ":" + railwayPort + "/" + railwayDB +
+                                 "?useSSL=true" +
+                                 "&requireSSL=true" +
+                                 "&verifyServerCertificate=false" +
+                                 "&allowPublicKeyRetrieval=true" +
+                                 "&serverTimezone=UTC";
+                
                 conn = DriverManager.getConnection(jdbcUrl, railwayUser, railwayPassword);
                 System.out.println("Connected to Railway MySQL database!");
             } else {
-                // Fallback to local database
+                // Fallback to local development
                 conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/car_rental", "root", "admin");
+                    "jdbc:mysql://localhost:3306/car_rental?useSSL=false", "root", "admin");
                 System.out.println("Connected to local MySQL database!");
             }
             return conn;
