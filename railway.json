@@ -1,0 +1,15 @@
+{
+  "build": {
+    "dockerfilePath": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": null
+  },
+  "services": [
+    {
+      "name": "web",
+      "port": 8080,
+      "protocol": "http"
+    }
+  ]
+}
