@@ -1,28 +1,21 @@
 package util;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBConnection {
+    private static final String URL = "jdbc:mysql://ballast.proxy.rlwy.net:3306/railway";
+    private static final String USER = "root";
+    private static final String PASSWORD = "ZqoHyWravfzvDSUbgmgynlCRuLbqfChU";
+
     public static Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Get environment variables from Railway
-            String host = System.getenv("MYSQLHOST");
-            String port = System.getenv("MYSQLPORT");
-            String dbName = System.getenv("MYSQLDATABASE");
-            String user = System.getenv("MYSQLUSER");
-            String pass = System.getenv("MYSQLPASSWORD");
-
-            // Construct JDBC URL
-            String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false";
-
-            // Create connection
-            conn = DriverManager.getConnection(url, user, pass);
-            System.out.println("✅ Database connection established successfully!");
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("✅ Connected to Railway MySQL!");
             return conn;
-
         } catch (ClassNotFoundException e) {
             System.err.println("❌ JDBC Driver not found: " + e.getMessage());
             e.printStackTrace();
@@ -30,9 +23,6 @@ public class DBConnection {
             System.err.println("❌ SQL Connection Error: " + e.getMessage());
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Error Code: " + e.getErrorCode());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("❌ Unexpected DB error: " + e.getMessage());
             e.printStackTrace();
         }
         return null;
