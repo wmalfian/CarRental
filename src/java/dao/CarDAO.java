@@ -4,10 +4,6 @@
  */
 package dao;
 
-/**
- *
- * @author wmalf
- */
 import java.sql.*;
 import java.util.*;
 import model.Car;

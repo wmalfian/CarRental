@@ -1,52 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package util;
 
-/**
- *
- * @author wmalf
- */
 import java.sql.*;
 
 public class DBConnection {
     public static Connection getConnection() {
-        Connection conn = null; // Initialize conn to null
+        Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/car_rental", "root", "admin");
-            System.out.println("Database connection established successfully!"); // Add this line
+
+            // Get environment variables from Railway
+            String host = System.getenv("MYSQLHOST");
+            String port = System.getenv("MYSQLPORT");
+            String dbName = System.getenv("MYSQLDATABASE");
+            String user = System.getenv("MYSQLUSER");
+            String pass = System.getenv("MYSQLPASSWORD");
+
+            // Construct JDBC URL
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false";
+
+            // Create connection
+            conn = DriverManager.getConnection(url, user, pass);
+            System.out.println("✅ Database connection established successfully!");
             return conn;
+
         } catch (ClassNotFoundException e) {
-            System.err.println("JDBC Driver not found: " + e.getMessage());
+            System.err.println("❌ JDBC Driver not found: " + e.getMessage());
             e.printStackTrace();
         } catch (SQLException e) {
-            System.err.println("SQL Connection Error: " + e.getMessage());
-            // For more detail, print the SQLState and ErrorCode
+            System.err.println("❌ SQL Connection Error: " + e.getMessage());
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("Error Code: " + e.getErrorCode());
             e.printStackTrace();
-        } catch (Exception e) { // Catch any other unexpected exceptions
-            System.err.println("An unexpected error occurred during DB connection: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return null; // Ensure null is returned if any exception occurs
-    }
-}
-
-/*
-public class DBConnection {
-    public static Connection getConnection() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/car_rental", "admin1", "admin123");
         } catch (Exception e) {
+            System.err.println("❌ Unexpected DB error: " + e.getMessage());
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 }
-*/
