@@ -19,6 +19,24 @@
 </head>
 <body>
     <div class="container mt-5">
+        <%
+            String error = request.getParameter("error");
+            if ("username_taken".equals(error)) {
+        %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                ❌ Username is already taken. Please choose another.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <%
+            } else if ("registration_failed".equals(error)) {
+        %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                ❌ Registration failed. Please try again later.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <%
+            }
+        %>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow-sm">

@@ -236,4 +236,31 @@ public class UserDAO {
             System.err.println("Error closing resources: " + ex.getMessage());
         }
     }
+    
+    public boolean usernameExists(String username) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            if (conn == null) {
+                System.err.println("DB connection is null in usernameExists");
+                return true;
+            }
+
+            String sql = "SELECT * FROM users WHERE username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true; // fail-safe: prevent duplicate if error
+        } finally {
+            closeResources(conn, stmt, rs);
+        }
+    }
+
+
 }
