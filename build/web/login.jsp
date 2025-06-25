@@ -8,16 +8,6 @@
 </head>
 <body>
     <%
-        String success = request.getParameter("success");
-        if (success != null) {
-    %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <%= success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <% } %>
-
-    <%
         if ("true".equals(request.getParameter("timeout"))) {
     %>
         <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
@@ -28,6 +18,15 @@
         }
     %>
     <div class="container mt-5">
+        <%
+            String success = request.getParameter("success");
+            if (success != null) {
+        %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= success %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow-sm">
