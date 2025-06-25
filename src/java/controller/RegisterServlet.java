@@ -11,36 +11,29 @@ import dao.UserDAO;
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String role = request.getParameter("role");
 
-        UserDAO dao = new UserDAO();
-
-        // ✅ Check if the username is already taken
-        if (dao.usernameExists(username)) {
-            response.sendRedirect("register.jsp?error=username_taken");
-            return;
-        }
-
-        // Proceed with registration
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
         user.setPhone(phone);
-        user.setRole("customer"); // force role as customer
+        user.setRole("customer"); // force all users to be customers
 
+        UserDAO dao = new UserDAO();
         boolean success = dao.registerUser(user);
 
         if (success) {
-            response.sendRedirect("login.jsp");
+            // ✅ redirect with success message
+            response.sendRedirect("login.jsp?success=Registered successfully. Please login.");
         } else {
-            // fallback error
-            response.sendRedirect("register.jsp?error=registration_failed");
+            request.setAttribute("error", "Registration failed.");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
         }
     }
 }
